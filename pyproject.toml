@@ -1,0 +1,12 @@
+[project]
+name = "argscichat-intent-labeling"
+version = "0.1.0"
+description = "CSE756 Final Project"
+requires-python = ">=3.9"
+
+[tool.setuptools]
+packages = ["models"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"

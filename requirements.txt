@@ -1,1 +1,6 @@
+ipykernel
 pandas
+seaborn
+requests
+scikit-learn
+hmmlearn
