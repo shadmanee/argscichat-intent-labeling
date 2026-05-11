@@ -1,7 +1,5 @@
 import numpy as np
 
-# TODO: have to understand this class
-
 class DialogueHMM:
     def __init__(self, states, observations, smoothing=1e-6):
         self.states = list(states)
