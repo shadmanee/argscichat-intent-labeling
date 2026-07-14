@@ -9,19 +9,21 @@ over a flat, non-sequential baseline.
 ## Repository Structure
  
 ```
-project/
+root/
 ├── data/
 │   ├── raw/                          # Downloaded dataset (see Setup)
 │   └── processed/                    # Intermediate and final processed files
 ├── models/
 │   └── dialogue_hmm.py               # Custom HMM implementation
 └── notebooks/
-    ├── data_exploration.ipynb         # EDA, dialogue ID engineering, label filtering
-    ├── cleaning.ipynb                 # Text normalization, sorting, sanity checks
-    ├── hmm_training_1.ipynb
-    ├── memm_training_1.ipynb
-    ├── crf_training_1.ipynb
-    └── nb_training_1.ipynb
+    ├── preprocessing/
+    │   ├── data_exploration.ipynb         # EDA, dialogue ID engineering, label filtering
+    │   └── cleaning.ipynb                 # Text normalization, sorting, sanity checks
+    └── training/
+        ├── hmm_training_1.ipynb
+        ├── memm_training_1.ipynb
+        ├── crf_training_1.ipynb
+        └── nb_training_1.ipynb
 ```
  
 ---
@@ -41,6 +43,7 @@ ArgSciChat: https://github.com/federicoruggeri/argscichat_project
  
 ```bash
 pip install -r requirements.txt
+pip install -e .
 ```
  
 ---
@@ -53,15 +56,15 @@ Run `dataset/download_dataset.py` once before anything else.
  
 ### 2. Run preprocessing notebooks in order
  
-1. notebooks/data_exploration.ipynb   → produces data/processed/processed_df_0.csv
-2. notebooks/cleaning.ipynb           → produces data/processed/processed_df_1.csv
+1. notebooks/preprocessing/data_exploration.ipynb   → produces data/processed/processed_df_0.csv
+2. notebooks/preprocessing/cleaning.ipynb           → produces data/processed/processed_df_1.csv
  
 ### 3. Run training notebooks (any order)
  
-- notebooks/nb_training_1.ipynb
-- notebooks/hmm_training_1.ipynb
-- notebooks/memm_training_1.ipynb
-- notebooks/crf_training_1.ipynb
+- notebooks/training/nb_training_1.ipynb
+- notebooks/training/hmm_training_1.ipynb
+- notebooks/training/memm_training_1.ipynb
+- notebooks/training/crf_training_1.ipynb
  
 All training notebooks read from data/processed/processed_df_1.csv and are
 self-contained — feature extraction is defined inside each notebook.
